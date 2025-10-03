@@ -6,7 +6,7 @@ const chats = [
   {
     id: 'chat-tech-leaders',
     name: '互联网大佬群',
-    avatar: 'https://i.pravatar.cc/100?img=24',
+    avatar: 'https://i.pravatar.cc/150?img=68',
     subtitle: '马云: 明天早上9点开会讨论新项目',
     updatedAt: now.subtract(2, 'minute').toISOString(),
     unreadCount: 5,
@@ -18,7 +18,7 @@ const chats = [
   {
     id: 'chat-mayun',
     name: '马云',
-    avatar: 'https://i.pravatar.cc/100?img=57',
+    avatar: 'https://i.pravatar.cc/150?img=12',
     subtitle: '下周的阿里云峰会记得参加',
     updatedAt: now.subtract(15, 'minute').toISOString(),
     unreadCount: 0,
@@ -30,7 +30,7 @@ const chats = [
   {
     id: 'chat-mahuateng',
     name: '马化腾',
-    avatar: 'https://i.pravatar.cc/100?img=34',
+    avatar: 'https://i.pravatar.cc/150?img=13',
     subtitle: '微信生态的新功能要不要了解一下？',
     updatedAt: now.subtract(1, 'hour').toISOString(),
     unreadCount: 0,
@@ -42,7 +42,7 @@ const chats = [
   {
     id: 'chat-leijun',
     name: '雷军',
-    avatar: 'https://i.pravatar.cc/100?img=4',
+    avatar: 'https://i.pravatar.cc/150?img=14',
     subtitle: '小米14 Pro已经发布了，你觉得怎么样？',
     updatedAt: now.subtract(3, 'hour').toISOString(),
     unreadCount: 2,
@@ -54,7 +54,7 @@ const chats = [
   {
     id: 'chat-liuqiangdong',
     name: '刘强东',
-    avatar: 'https://i.pravatar.cc/100?img=9',
+    avatar: 'https://i.pravatar.cc/150?img=15',
     subtitle: '京东物流的效率又提升了',
     updatedAt: now.subtract(1, 'day').toISOString(),
     unreadCount: 0,
@@ -66,7 +66,7 @@ const chats = [
   {
     id: 'chat-zhangyiming',
     name: '张一鸣',
-    avatar: 'https://i.pravatar.cc/100?img=70',
+    avatar: 'https://i.pravatar.cc/150?img=33',
     subtitle: '抖音的新算法上线了，效果不错',
     updatedAt: now.subtract(2, 'day').toISOString(),
     unreadCount: 3,
@@ -78,7 +78,7 @@ const chats = [
   {
     id: 'chat-huangzheng',
     name: '黄峥',
-    avatar: 'https://i.pravatar.cc/100?img=17',
+    avatar: 'https://i.pravatar.cc/150?img=59',
     subtitle: '拼多多Q3财报出来了，超预期',
     updatedAt: now.subtract(3, 'day').toISOString(),
     unreadCount: 0,
@@ -90,7 +90,7 @@ const chats = [
   {
     id: 'chat-dinglei',
     name: '丁磊',
-    avatar: 'https://i.pravatar.cc/100?img=11',
+    avatar: 'https://i.pravatar.cc/150?img=60',
     subtitle: '网易云音乐会员送你一个',
     updatedAt: now.subtract(4, 'day').toISOString(),
     unreadCount: 0,
@@ -102,7 +102,7 @@ const chats = [
   {
     id: 'chat-wangxing',
     name: '王兴',
-    avatar: 'https://i.pravatar.cc/100?img=50',
+    avatar: 'https://i.pravatar.cc/150?img=61',
     subtitle: '美团外卖的即时配送又快了10分钟',
     updatedAt: now.subtract(5, 'day').toISOString(),
     unreadCount: 1,
@@ -114,7 +114,7 @@ const chats = [
   {
     id: 'chat-liyanhong',
     name: '李彦宏',
-    avatar: 'https://i.pravatar.cc/100?img=28',
+    avatar: 'https://i.pravatar.cc/150?img=62',
     subtitle: '百度AI的新进展想跟你聊聊',
     updatedAt: now.subtract(6, 'day').toISOString(),
     unreadCount: 0,
@@ -293,13 +293,13 @@ const contactSections = [
       {
         id: 'contact-cheng-wei',
         name: '程维',
-        avatar: 'https://i.pravatar.cc/100?img=15',
+        avatar: 'https://i.pravatar.cc/150?img=51',
         status: '滴滴出行创始人'
       },
       {
         id: 'contact-chen-tianqiao',
         name: '陈天桥',
-        avatar: 'https://i.pravatar.cc/100?img=30',
+        avatar: 'https://i.pravatar.cc/150?img=52',
         status: '盛大网络创始人'
       }
     ]
@@ -310,7 +310,7 @@ const contactSections = [
       {
         id: 'contact-ding-lei',
         name: '丁磊',
-        avatar: 'https://i.pravatar.cc/100?img=11',
+        avatar: 'https://i.pravatar.cc/150?img=60',
         status: '网易创始人'
       }
     ]
@@ -321,13 +321,13 @@ const contactSections = [
       {
         id: 'contact-huang-zheng',
         name: '黄峥',
-        avatar: 'https://i.pravatar.cc/100?img=17',
+        avatar: 'https://i.pravatar.cc/150?img=59',
         status: '拼多多创始人'
       },
       {
         id: 'contact-he-xiaopeng',
         name: '何小鹏',
-        avatar: 'https://i.pravatar.cc/100?img=56',
+        avatar: 'https://i.pravatar.cc/150?img=58',
         status: '小鹏汽车创始人'
       }
     ]
@@ -338,31 +338,31 @@ const contactSections = [
       {
         id: 'contact-lei-jun',
         name: '雷军',
-        avatar: 'https://i.pravatar.cc/100?img=4',
+        avatar: 'https://i.pravatar.cc/150?img=14',
         status: '小米科技创始人'
       },
       {
         id: 'contact-li-yanhong',
         name: '李彦宏',
-        avatar: 'https://i.pravatar.cc/100?img=28',
+        avatar: 'https://i.pravatar.cc/150?img=62',
         status: '百度创始人'
       },
       {
         id: 'contact-liu-qiangdong',
         name: '刘强东',
-        avatar: 'https://i.pravatar.cc/100?img=9',
+        avatar: 'https://i.pravatar.cc/150?img=15',
         status: '京东创始人'
       },
       {
         id: 'contact-luo-yonghao',
         name: '罗永浩',
-        avatar: 'https://i.pravatar.cc/100?img=60',
+        avatar: 'https://i.pravatar.cc/150?img=56',
         status: '锤子科技创始人'
       },
       {
         id: 'contact-li-xiang',
         name: '李想',
-        avatar: 'https://i.pravatar.cc/100?img=22',
+        avatar: 'https://i.pravatar.cc/150?img=57',
         status: '理想汽车创始人'
       }
     ]
@@ -373,13 +373,13 @@ const contactSections = [
       {
         id: 'contact-ma-yun',
         name: '马云',
-        avatar: 'https://i.pravatar.cc/100?img=57',
+        avatar: 'https://i.pravatar.cc/150?img=12',
         status: '阿里巴巴创始人'
       },
       {
         id: 'contact-ma-huateng',
         name: '马化腾',
-        avatar: 'https://i.pravatar.cc/100?img=34',
+        avatar: 'https://i.pravatar.cc/150?img=13',
         status: '腾讯创始人'
       }
     ]
@@ -390,7 +390,7 @@ const contactSections = [
       {
         id: 'contact-pan-shiyi',
         name: '潘石屹',
-        avatar: 'https://i.pravatar.cc/100?img=41',
+        avatar: 'https://i.pravatar.cc/150?img=67',
         status: 'SOHO中国创始人'
       }
     ]
@@ -401,7 +401,7 @@ const contactSections = [
       {
         id: 'contact-shen-nanpeng',
         name: '沈南鹏',
-        avatar: 'https://i.pravatar.cc/100?img=45',
+        avatar: 'https://i.pravatar.cc/150?img=66',
         status: '红杉资本创始人'
       }
     ]
@@ -412,13 +412,13 @@ const contactSections = [
       {
         id: 'contact-wang-xing',
         name: '王兴',
-        avatar: 'https://i.pravatar.cc/100?img=50',
+        avatar: 'https://i.pravatar.cc/150?img=61',
         status: '美团创始人'
       },
       {
         id: 'contact-wang-jianlin',
         name: '王健林',
-        avatar: 'https://i.pravatar.cc/100?img=52',
+        avatar: 'https://i.pravatar.cc/150?img=65',
         status: '万达集团创始人'
       }
     ]
@@ -429,13 +429,13 @@ const contactSections = [
       {
         id: 'contact-yu-minhong',
         name: '俞敏洪',
-        avatar: 'https://i.pravatar.cc/100?img=61',
+        avatar: 'https://i.pravatar.cc/150?img=64',
         status: '新东方创始人'
       },
       {
         id: 'contact-yao-jinbo',
         name: '姚劲波',
-        avatar: 'https://i.pravatar.cc/100?img=63',
+        avatar: 'https://i.pravatar.cc/150?img=63',
         status: '58同城创始人'
       }
     ]
@@ -446,19 +446,19 @@ const contactSections = [
       {
         id: 'contact-zhang-yiming',
         name: '张一鸣',
-        avatar: 'https://i.pravatar.cc/100?img=70',
+        avatar: 'https://i.pravatar.cc/150?img=33',
         status: '字节跳动创始人'
       },
       {
         id: 'contact-zhou-hongyi',
         name: '周鸿祎',
-        avatar: 'https://i.pravatar.cc/100?img=72',
+        avatar: 'https://i.pravatar.cc/150?img=53',
         status: '360创始人'
       },
       {
         id: 'contact-zhang-xiaolong',
         name: '张小龙',
-        avatar: 'https://i.pravatar.cc/100?img=74',
+        avatar: 'https://i.pravatar.cc/150?img=54',
         status: '微信之父'
       }
     ]
