@@ -254,23 +254,6 @@ onUnmounted(() => {
 
 <template>
   <div class="phone-frame">
-    <div class="status-bar">
-      <span class="status-time">{{ statusTime }}</span>
-      <div class="status-icons">
-        <span class="icon mini-app" />
-        <span class="icon cloud" />
-        <span class="icon bell" />
-        <span class="icon signal">5G</span>
-        <span class="icon battery">
-          <svg viewBox="0 0 26 14" aria-hidden="true">
-            <rect x="1" y="1" width="20" height="12" rx="3" ry="3" />
-            <rect x="22" y="4" width="3" height="6" rx="1.5" />
-            <rect x="3" y="3" width="12" height="8" rx="2" ry="2" />
-          </svg>
-        </span>
-      </div>
-    </div>
-
     <header v-if="shouldShowNav" class="nav-bar">
       <button class="nav-left" :class="navLeftType" type="button" @click="handleNavLeft">
         <svg v-if="navLeftType === 'back'" viewBox="0 0 24 24" aria-hidden="true">

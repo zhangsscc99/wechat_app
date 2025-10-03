@@ -30,17 +30,39 @@ const groups = computed(() => {
   return grouped;
 });
 
-const iconEmojis = {
-  'moments': '📷',
-  'live': '📹',
-  'scan': '📱',
-  'listen': '🎵',
-  'games': '🎮',
-  'mini-app': '📲'
+// SVG 图标路径定义
+const iconPaths = {
+  'moments': [
+    'M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z',
+    'M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z'
+  ],
+  'live': [
+    'M23 7l-7 5 7 5V7z',
+    'M16 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z'
+  ],
+  'scan': [
+    'M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2',
+    'M3 17v2a2 2 0 0 0 2 2h2M17 21h2a2 2 0 0 0 2-2v-2',
+    'M7 12h10'
+  ],
+  'listen': [
+    'M9 18V5l12-2v13',
+    'M9 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
+    'M21 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'
+  ],
+  'games': [
+    'M6 12h4M8 10v4',
+    'M15 11h.01M18 13h.01',
+    'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z'
+  ],
+  'mini-app': [
+    'M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16m-2-2l1.586-1.586a2 2 0 0 1 2.828 0L20 14.414M6 20h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z',
+    'M8 10h.01'
+  ]
 };
 
-function getIconEmoji(iconType) {
-  return iconEmojis[iconType] || '⭐';
+function getIconPaths(iconType) {
+  return iconPaths[iconType] || iconPaths['mini-app'];
 }
 
 function handleOpen(item) {
@@ -64,7 +86,18 @@ function handleOpen(item) {
       >
         <div class="item-left">
           <div class="item-icon" :data-type="item.icon">
-            <span class="icon-emoji">{{ getIconEmoji(item.icon) }}</span>
+            <svg viewBox="0 0 24 24" class="icon-svg" aria-hidden="true">
+              <path
+                v-for="(path, index) in getIconPaths(item.icon)"
+                :key="index"
+                :d="path"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </div>
           <div class="item-content">
             <span class="item-title">{{ item.title }}</span>
@@ -167,9 +200,10 @@ function handleOpen(item) {
   background: linear-gradient(135deg, #A066F7, #8B4FED);
 }
 
-.icon-emoji {
-  font-size: 24px;
-  line-height: 1;
+.icon-svg {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 .item-content {

@@ -56,19 +56,44 @@ const menuGroups = computed(() => {
   return groups;
 });
 
-const iconEmojis = {
-  'services': '💼',
-  'favorites': '⭐',
-  'moments': '📷',
-  'orders': '💳',
-  'wallet': '💰',
-  'emoji': '😊',
-  'stickers': '😀',
-  'settings': '⚙️'
+// SVG 图标路径定义
+const iconPaths = {
+  'services': [
+    'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'
+  ],
+  'favorites': [
+    'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'
+  ],
+  'moments': [
+    'M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z',
+    'M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z'
+  ],
+  'orders': [
+    'M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6l-2-2H5a2 2 0 0 0-2 2z'
+  ],
+  'wallet': [
+    'M21 12V7H5a2 2 0 0 1 0-4h14v4',
+    'M3 5v14a2 2 0 0 0 2 2h16v-5',
+    'M18 12a2 2 0 0 0 0 4h4v-4h-4z'
+  ],
+  'emoji': [
+    'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z',
+    'M8 14s1.5 2 4 2 4-2 4-2',
+    'M9 9h.01M15 9h.01'
+  ],
+  'stickers': [
+    'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z',
+    'M8 14s1.5 2 4 2 4-2 4-2',
+    'M9 9h.01M15 9h.01'
+  ],
+  'settings': [
+    'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
+    'M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z'
+  ]
 };
 
-function getIconEmoji(iconType) {
-  return iconEmojis[iconType] || '📱';
+function getIconPaths(iconType) {
+  return iconPaths[iconType] || iconPaths['services'];
 }
 </script>
 
@@ -136,7 +161,18 @@ function getIconEmoji(iconType) {
           class="menu-row"
         >
           <div class="menu-icon" :data-type="item.icon">
-            <span class="icon-emoji">{{ getIconEmoji(item.icon) }}</span>
+            <svg viewBox="0 0 24 24" class="icon-svg" aria-hidden="true">
+              <path
+                v-for="(path, index) in getIconPaths(item.icon)"
+                :key="index"
+                :d="path"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </div>
           <span class="menu-label">{{ item.title }}</span>
           <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -381,9 +417,10 @@ function getIconEmoji(iconType) {
   background: linear-gradient(135deg, #8B8B8B, #6B6B6B);
 }
 
-.icon-emoji {
-  font-size: 20px;
-  line-height: 1;
+.icon-svg {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 .menu-label {
