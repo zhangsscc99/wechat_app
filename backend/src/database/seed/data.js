@@ -232,71 +232,19 @@ const contactShortcuts = [
 
 const contactSections = [
   {
-    letter: 'A',
-    contacts: [
-      {
-        id: 'contact-aurora-chen',
-        name: 'Aurora Chen',
-        avatar: 'https://i.pravatar.cc/100?img=15',
-        status: 'Synth orchestra enthusiast'
-      },
-      {
-        id: 'contact-alan-drift',
-        name: 'Alan Drift',
-        avatar: 'https://i.pravatar.cc/100?img=30',
-        status: 'Learning underwater photography'
-      },
-      {
-        id: 'contact-amber-voyage',
-        name: 'Amber Voyage',
-        avatar: 'https://i.pravatar.cc/100?img=39',
-        status: 'Running sunrise hikes'
-      }
-    ]
-  },
-  {
-    letter: 'B',
-    contacts: [
-      {
-        id: 'contact-basil-moon',
-        name: 'Basil Moon',
-        avatar: 'https://i.pravatar.cc/100?img=11',
-        status: 'Cold brew taster'
-      },
-      {
-        id: 'contact-bryn-forest',
-        name: 'Bryn Forest',
-        avatar: 'https://i.pravatar.cc/100?img=17',
-        status: 'Sketching every café corner'
-      },
-      {
-        id: 'contact-bree-amber',
-        name: 'Bree Amber',
-        avatar: 'https://i.pravatar.cc/100?img=56',
-        status: 'Studio lighting geek'
-      }
-    ]
-  },
-  {
     letter: 'C',
     contacts: [
       {
-        id: 'contact-cassio-sun',
-        name: 'Cassio Sun',
-        avatar: 'https://i.pravatar.cc/100?img=4',
-        status: 'Streaming indie folk live'
+        id: 'contact-cheng-wei',
+        name: '程维',
+        avatar: 'https://i.pravatar.cc/100?img=15',
+        status: '滴滴出行创始人'
       },
       {
-        id: 'contact-cedar-kite',
-        name: 'Cedar Kite',
-        avatar: 'https://i.pravatar.cc/100?img=28',
-        status: 'Planning island retreats'
-      },
-      {
-        id: 'contact-coral-light',
-        name: 'Coral Light',
-        avatar: 'https://i.pravatar.cc/100?img=9',
-        status: 'Learning sign language'
+        id: 'contact-chen-tianqiao',
+        name: '陈天桥',
+        avatar: 'https://i.pravatar.cc/100?img=30',
+        status: '盛大网络创始人'
       }
     ]
   },
@@ -304,33 +252,158 @@ const contactSections = [
     letter: 'D',
     contacts: [
       {
-        id: 'contact-dune-orbit',
-        name: 'Dune Orbit',
-        avatar: 'https://i.pravatar.cc/100?img=60',
-        status: 'Astronomy club curator'
-      },
-      {
-        id: 'contact-dahlia-rise',
-        name: 'Dahlia Rise',
-        avatar: 'https://i.pravatar.cc/100?img=22',
-        status: 'Minimalism photographer'
+        id: 'contact-ding-lei',
+        name: '丁磊',
+        avatar: 'https://i.pravatar.cc/100?img=11',
+        status: '网易创始人'
       }
     ]
   },
   {
-    letter: 'E',
+    letter: 'H',
     contacts: [
       {
-        id: 'contact-ember-sail',
-        name: 'Ember Sail',
-        avatar: 'https://i.pravatar.cc/100?img=57',
-        status: 'Weekend sailor'
+        id: 'contact-huang-zheng',
+        name: '黄峥',
+        avatar: 'https://i.pravatar.cc/100?img=17',
+        status: '拼多多创始人'
       },
       {
-        id: 'contact-echo-rain',
-        name: 'Echo Rain',
+        id: 'contact-he-xiaopeng',
+        name: '何小鹏',
+        avatar: 'https://i.pravatar.cc/100?img=56',
+        status: '小鹏汽车创始人'
+      }
+    ]
+  },
+  {
+    letter: 'L',
+    contacts: [
+      {
+        id: 'contact-lei-jun',
+        name: '雷军',
+        avatar: 'https://i.pravatar.cc/100?img=4',
+        status: '小米科技创始人'
+      },
+      {
+        id: 'contact-li-yanhong',
+        name: '李彦宏',
+        avatar: 'https://i.pravatar.cc/100?img=28',
+        status: '百度创始人'
+      },
+      {
+        id: 'contact-liu-qiangdong',
+        name: '刘强东',
+        avatar: 'https://i.pravatar.cc/100?img=9',
+        status: '京东创始人'
+      },
+      {
+        id: 'contact-luo-yonghao',
+        name: '罗永浩',
+        avatar: 'https://i.pravatar.cc/100?img=60',
+        status: '锤子科技创始人'
+      },
+      {
+        id: 'contact-li-xiang',
+        name: '李想',
+        avatar: 'https://i.pravatar.cc/100?img=22',
+        status: '理想汽车创始人'
+      }
+    ]
+  },
+  {
+    letter: 'M',
+    contacts: [
+      {
+        id: 'contact-ma-yun',
+        name: '马云',
+        avatar: 'https://i.pravatar.cc/100?img=57',
+        status: '阿里巴巴创始人'
+      },
+      {
+        id: 'contact-ma-huateng',
+        name: '马化腾',
         avatar: 'https://i.pravatar.cc/100?img=34',
-        status: 'Synthwave DJ'
+        status: '腾讯创始人'
+      }
+    ]
+  },
+  {
+    letter: 'P',
+    contacts: [
+      {
+        id: 'contact-pan-shiyi',
+        name: '潘石屹',
+        avatar: 'https://i.pravatar.cc/100?img=41',
+        status: 'SOHO中国创始人'
+      }
+    ]
+  },
+  {
+    letter: 'S',
+    contacts: [
+      {
+        id: 'contact-shen-nanpeng',
+        name: '沈南鹏',
+        avatar: 'https://i.pravatar.cc/100?img=45',
+        status: '红杉资本创始人'
+      }
+    ]
+  },
+  {
+    letter: 'W',
+    contacts: [
+      {
+        id: 'contact-wang-xing',
+        name: '王兴',
+        avatar: 'https://i.pravatar.cc/100?img=50',
+        status: '美团创始人'
+      },
+      {
+        id: 'contact-wang-jianlin',
+        name: '王健林',
+        avatar: 'https://i.pravatar.cc/100?img=52',
+        status: '万达集团创始人'
+      }
+    ]
+  },
+  {
+    letter: 'Y',
+    contacts: [
+      {
+        id: 'contact-yu-minhong',
+        name: '俞敏洪',
+        avatar: 'https://i.pravatar.cc/100?img=61',
+        status: '新东方创始人'
+      },
+      {
+        id: 'contact-yao-jinbo',
+        name: '姚劲波',
+        avatar: 'https://i.pravatar.cc/100?img=63',
+        status: '58同城创始人'
+      }
+    ]
+  },
+  {
+    letter: 'Z',
+    contacts: [
+      {
+        id: 'contact-zhang-yiming',
+        name: '张一鸣',
+        avatar: 'https://i.pravatar.cc/100?img=70',
+        status: '字节跳动创始人'
+      },
+      {
+        id: 'contact-zhou-hongyi',
+        name: '周鸿祎',
+        avatar: 'https://i.pravatar.cc/100?img=72',
+        status: '360创始人'
+      },
+      {
+        id: 'contact-zhang-xiaolong',
+        name: '张小龙',
+        avatar: 'https://i.pravatar.cc/100?img=74',
+        status: '微信之父'
       }
     ]
   }

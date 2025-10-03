@@ -1,10 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const { bootstrapDatabase } = require('./database/bootstrap');
-const routes = require('./routes');
 const { BaseHttpError } = require('./utils/errors');
 
+// 先初始化数据库，再加载路由（路由会加载 repository，repository 中有 prepare 语句）
 bootstrapDatabase();
+
+const routes = require('./routes');
 
 const app = express();
 
