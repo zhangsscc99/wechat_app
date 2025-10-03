@@ -30,6 +30,19 @@ const groups = computed(() => {
   return grouped;
 });
 
+const iconEmojis = {
+  'moments': '📷',
+  'live': '📹',
+  'scan': '📱',
+  'listen': '🎵',
+  'games': '🎮',
+  'mini-app': '📲'
+};
+
+function getIconEmoji(iconType) {
+  return iconEmojis[iconType] || '⭐';
+}
+
 function handleOpen(item) {
   emit('open', item);
 }
@@ -41,7 +54,7 @@ function handleOpen(item) {
       v-for="(group, index) in groups"
       :key="`group-${index}`"
       class="discover-group"
-      :class="{ 'group-gap': index !== 0 }"
+      :class="{ 'has-spacing': index !== 0 }"
     >
       <div
         v-for="item in group"
@@ -49,16 +62,22 @@ function handleOpen(item) {
         class="discover-item"
         @click="handleOpen(item)"
       >
-        <div class="left">
-          <div class="icon" :data-type="item.icon" />
-          <div class="text">
-            <span class="title">{{ item.title }}</span>
-            <span v-if="item.subtitle" class="subtitle">{{ item.subtitle }}</span>
+        <div class="item-left">
+          <div class="item-icon" :data-type="item.icon">
+            <span class="icon-emoji">{{ getIconEmoji(item.icon) }}</span>
+          </div>
+          <div class="item-content">
+            <span class="item-title">{{ item.title }}</span>
+            <span v-if="item.subtitle" class="item-subtitle">{{ item.subtitle }}</span>
           </div>
         </div>
-        <div class="right">
-          <span v-if="item.badge" class="badge">{{ formatCountBadge(item.badge) }}</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <div class="item-right">
+          <span v-if="item.badge" class="item-badge">
+            {{ formatCountBadge(item.badge) }}
+          </span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </div>
       </div>
     </div>
@@ -67,10 +86,10 @@ function handleOpen(item) {
 
 <style scoped>
 .discover {
-  padding: 12px 0 72px;
+  padding: 10px 0 72px;
   height: 100%;
   overflow-y: auto;
-  background: #f4f4f4;
+  background: #EFEFF4;
 }
 
 .discover::-webkit-scrollbar {
@@ -80,12 +99,10 @@ function handleOpen(item) {
 
 .discover-group {
   background: #fff;
-  border-top: 1px solid #ececec;
-  border-bottom: 1px solid #ececec;
 }
 
-.group-gap {
-  margin-top: 12px;
+.has-spacing {
+  margin-top: 10px;
 }
 
 .discover-item {
@@ -94,89 +111,114 @@ function handleOpen(item) {
   justify-content: space-between;
   padding: 12px 16px;
   background: #fff;
-  border-bottom: 1px solid #ececec;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+  border-bottom: 0.5px solid #E5E5E5;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.discover-item:active {
+  background: #ECECEC;
 }
 
 .discover-item:last-child {
   border-bottom: none;
 }
 
-.left {
+.item-left {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
-.icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: inline-flex;
+.item-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 
-.icon[data-type='moments'] {
-  background: conic-gradient(#ffba00, #ffa115, #ff7f50, #ffba00);
+.item-icon[data-type='moments'] {
+  background: linear-gradient(135deg, #FF9F42, #FF7629);
 }
 
-.icon[data-type='live'] {
-  background: radial-gradient(circle at 30% 30%, #ff8a8a, #ff4d4d);
+.item-icon[data-type='live'] {
+  background: linear-gradient(135deg, #FF6B6B, #FF4444);
 }
 
-.icon[data-type='scan'] {
-  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+.item-icon[data-type='scan'] {
+  background: linear-gradient(135deg, #36A9F5, #2C99E8);
 }
 
-.icon[data-type='listen'] {
-  background: linear-gradient(135deg, #f472b6, #ec4899);
+.item-icon[data-type='listen'] {
+  background: linear-gradient(135deg, #FF70B8, #FF4A9F);
 }
 
-.icon[data-type='games'] {
-  background: linear-gradient(135deg, #facc15, #f97316);
+.item-icon[data-type='games'] {
+  background: linear-gradient(135deg, #FFD04B, #FFC20E);
 }
 
-.icon[data-type='mini-app'] {
-  background: linear-gradient(135deg, #a855f7, #7c3aed);
+.item-icon[data-type='mini-app'] {
+  background: linear-gradient(135deg, #A066F7, #8B4FED);
 }
 
-.text {
+.icon-emoji {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.item-content {
   display: flex;
   flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
 }
 
-.title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #111;
+.item-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: -0.3px;
 }
 
-.subtitle {
-  margin-top: 2px;
-  font-size: 12px;
-  color: #8e8e8e;
+.item-subtitle {
+  font-size: 13px;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.right {
+.item-right {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
-.badge {
+.item-badge {
   min-width: 18px;
-  padding: 2px 6px;
-  background-color: #ff5151;
+  height: 18px;
+  padding: 0 5px;
+  background: #FA5151;
   color: #fff;
-  border-radius: 16px;
+  border-radius: 9px;
   font-size: 12px;
   font-weight: 500;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
-svg {
-  width: 18px;
-  height: 18px;
+.arrow-icon {
+  width: 16px;
+  height: 16px;
 }
 </style>

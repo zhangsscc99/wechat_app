@@ -9,33 +9,73 @@ const props = defineProps({
     default: () => []
   }
 });
+
+const iconMap = {
+  'user-plus': '👥',
+  'chat-only': '💬',
+  'group-chat': '👥',
+  'tag': '🏷️',
+  'official': '📢',
+  'service': '🔧',
+  'services': '🔧'
+};
+
+function getIconEmoji(iconType) {
+  return iconMap[iconType] || '📱';
+}
 </script>
 
 <template>
   <div class="contacts">
-    <div class="shortcut" v-for="item in props.shortcuts" :key="item.id">
-      <div class="icon" :data-type="item.icon" />
-      <div class="shortcut-content">
-        <span class="title">{{ item.label }}</span>
-        <span v-if="item.note" class="subtitle">{{ item.note }}</span>
+    <!-- 快捷入口 -->
+    <div class="shortcuts-section">
+      <div 
+        class="shortcut-item" 
+        v-for="item in props.shortcuts" 
+        :key="item.id"
+      >
+        <div class="shortcut-icon" :data-type="item.icon">
+          <span class="icon-emoji">{{ getIconEmoji(item.icon) }}</span>
+        </div>
+        <div class="shortcut-content">
+          <span class="shortcut-label">{{ item.label }}</span>
+          <span v-if="item.note" class="shortcut-note">{{ item.note }}</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 6l6 6-6 6" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </div>
     </div>
 
+    <!-- 字母索引 -->
     <div class="index-bar">
-      <span v-for="section in props.sections" :key="section.letter">{{ section.letter }}</span>
+      <span 
+        v-for="section in props.sections" 
+        :key="section.letter"
+        class="index-letter"
+      >
+        {{ section.letter }}
+      </span>
     </div>
 
+    <!-- 联系人列表 -->
     <div
       v-for="section in props.sections"
       :key="section.letter"
       class="contact-section"
     >
-      <div class="section-title">{{ section.letter }}</div>
-      <div v-for="contact in section.contacts" :key="contact.id" class="contact-item">
-        <img :src="contact.avatar" :alt="contact.name" class="avatar" />
-        <div class="info">
-          <span class="name">{{ contact.name }}</span>
-          <span class="status">{{ contact.status }}</span>
+      <div class="section-header">{{ section.letter }}</div>
+      <div class="section-items">
+        <div 
+          v-for="contact in section.contacts" 
+          :key="contact.id" 
+          class="contact-item"
+        >
+          <img :src="contact.avatar" :alt="contact.name" class="contact-avatar" />
+          <div class="contact-info">
+            <span class="contact-name">{{ contact.name }}</span>
+            <span v-if="contact.status" class="contact-status">{{ contact.status }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -45,10 +85,10 @@ const props = defineProps({
 <style scoped>
 .contacts {
   padding-bottom: 72px;
-  padding-right: 26px;
+  padding-right: 20px;
   overflow-y: auto;
   height: 100%;
-  background: #f4f4f4;
+  background: #EFEFF4;
   position: relative;
 }
 
@@ -57,86 +97,133 @@ const props = defineProps({
   height: 0;
 }
 
-.shortcut {
+/* 快捷入口区域 */
+.shortcuts-section {
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.shortcut-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 16px;
+  padding: 12px 16px;
   background: #fff;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 0.5px solid #E5E5E5;
+  cursor: pointer;
+  transition: background 0.15s ease;
 }
 
-.icon {
+.shortcut-item:active {
+  background: #ECECEC;
+}
+
+.shortcut-item:last-child {
+  border-bottom: none;
+}
+
+.shortcut-icon {
   width: 40px;
   height: 40px;
-  border-radius: 12px;
-  display: inline-flex;
+  border-radius: 6px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-size: 22px;
+  flex-shrink: 0;
 }
 
-.icon[data-type='user-plus'] {
-  background: linear-gradient(135deg, #ff9b44, #ff692d);
+.shortcut-icon[data-type='user-plus'] {
+  background: linear-gradient(135deg, #FF9F42, #FF7629);
 }
 
-.icon[data-type='chat-only'] {
-  background: linear-gradient(135deg, #ffb347, #ffcc33);
+.shortcut-icon[data-type='chat-only'] {
+  background: linear-gradient(135deg, #FFD04B, #FFC20E);
 }
 
-.icon[data-type='group-chat'] {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+.shortcut-icon[data-type='group-chat'] {
+  background: linear-gradient(135deg, #26C65F, #1AAF4C);
 }
 
-.icon[data-type='tag'] {
-  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+.shortcut-icon[data-type='tag'] {
+  background: linear-gradient(135deg, #36A9F5, #2C99E8);
 }
 
-.icon[data-type='official'],
-.icon[data-type='service'],
-.icon[data-type='services'] {
-  background: linear-gradient(135deg, #2563eb, #1e3a8a);
+.shortcut-icon[data-type='official'],
+.shortcut-icon[data-type='service'],
+.shortcut-icon[data-type='services'] {
+  background: linear-gradient(135deg, #5A8CEC, #4A7CE1);
+}
+
+.icon-emoji {
+  font-size: 22px;
+  line-height: 1;
 }
 
 .shortcut-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
-.title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #111;
+.shortcut-label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: -0.3px;
 }
 
-.subtitle {
-  font-size: 12px;
-  color: #a0a0a0;
+.shortcut-note {
+  font-size: 13px;
+  color: #999;
 }
 
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* 字母索引 */
 .index-bar {
   position: absolute;
-  right: 6px;
-  top: 120px;
+  right: 2px;
+  top: 200px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-size: 11px;
-  color: #1aad19;
-  text-align: center;
+  align-items: center;
+  gap: 2px;
+  z-index: 10;
+  user-select: none;
 }
 
+.index-letter {
+  font-size: 10px;
+  color: #576B95;
+  font-weight: 500;
+  line-height: 14px;
+  padding: 1px 4px;
+  cursor: pointer;
+}
+
+/* 联系人分组 */
 .contact-section {
-  margin-top: 8px;
+  margin-bottom: 0;
 }
 
-.section-title {
-  padding: 6px 16px;
-  font-size: 12px;
-  color: #6b6b6b;
-  background: #f0f0f0;
+.section-header {
+  padding: 4px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  background: #EFEFF4;
+  letter-spacing: 0.5px;
+}
+
+.section-items {
+  background: #fff;
 }
 
 .contact-item {
@@ -145,30 +232,47 @@ const props = defineProps({
   gap: 12px;
   padding: 10px 16px;
   background: #fff;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 0.5px solid #E5E5E5;
+  cursor: pointer;
+  transition: background 0.15s ease;
 }
 
-.contact-item .avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+.contact-item:active {
+  background: #ECECEC;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
-.info {
+.contact-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
-.name {
-  font-size: 15px;
-  font-weight: 600;
-  color: #111;
+.contact-name {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: -0.3px;
 }
 
-.status {
-  margin-top: 2px;
-  font-size: 12px;
-  color: #8e8e8e;
+.contact-status {
+  font-size: 13px;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

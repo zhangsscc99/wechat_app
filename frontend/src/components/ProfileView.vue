@@ -55,62 +55,93 @@ const menuGroups = computed(() => {
 
   return groups;
 });
+
+const iconEmojis = {
+  'services': '💼',
+  'favorites': '⭐',
+  'moments': '📷',
+  'orders': '💳',
+  'wallet': '💰',
+  'emoji': '😊',
+  'stickers': '😀',
+  'settings': '⚙️'
+};
+
+function getIconEmoji(iconType) {
+  return iconEmojis[iconType] || '📱';
+}
 </script>
 
 <template>
   <div class="profile" v-if="props.profile?.user">
-    <section class="profile-header">
-      <img :src="props.profile.user.avatar" alt="头像" class="avatar" />
-      <div class="header-info">
-        <div class="name-row">
-          <h2>{{ props.profile.user.name }}</h2>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 6l6 6-6 6" fill="none" stroke="#c0c0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+    <!-- 用户信息卡片 -->
+    <section class="profile-card">
+      <div class="card-content">
+        <img :src="props.profile.user.avatar" alt="头像" class="user-avatar" />
+        <div class="user-info">
+          <div class="name-section">
+            <h2 class="user-name">{{ props.profile.user.name }}</h2>
+            <svg class="chevron-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" fill="none" stroke="#BEBEBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <p class="wechat-id">微信号：{{ props.profile.user.wechatId }}</p>
+          <p v-if="props.profile.user.tagline" class="user-tagline">{{ props.profile.user.tagline }}</p>
         </div>
-        <p class="wechat-id">微信号：{{ props.profile.user.wechatId }}</p>
-        <p class="tagline">{{ props.profile.user.tagline }}</p>
       </div>
-      <button class="qr-button" type="button" aria-label="二维码">
+      <button class="qr-code-button" type="button" aria-label="我的二维码">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM16 14h2v2h-2zM14 18h2M20 18h2M20 16h2" fill="none" stroke="#6b6b6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          <rect x="4" y="4" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
+          <rect x="14" y="4" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
+          <rect x="4" y="14" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
+          <rect x="15" y="15" width="2" height="2" fill="#000"/>
+          <rect x="18" y="15" width="2" height="2" fill="#000"/>
+          <rect x="15" y="18" width="2" height="2" fill="#000"/>
+          <rect x="18" y="18" width="2" height="2" fill="#000"/>
         </svg>
       </button>
     </section>
 
-    <section class="status-strip">
-      <button v-if="statusAction" class="status-button" type="button">
-        <span class="plus">+</span>
-        <span>{{ statusLabel }}</span>
+    <!-- 状态栏 -->
+    <section class="status-bar" v-if="statusAction || friendsAction">
+      <button v-if="statusAction" class="add-status-button" type="button">
+        <span class="plus-sign">+</span>
+        <span class="status-text">{{ statusLabel }}</span>
       </button>
-      <div class="status-friends" v-if="friendsAction">
-        <div class="avatar-stack">
+      <div class="friends-status" v-if="friendsAction">
+        <div class="friend-avatars">
           <img
             v-for="(avatar, index) in statusPreviewAvatars"
             :key="index"
             :src="avatar"
-            alt="好友头像"
+            alt="好友"
+            class="friend-avatar"
           />
         </div>
-        <span class="friends-text">{{ friendsAction.extra || '等好友关注你' }}</span>
+        <span class="friends-label">{{ friendsAction.extra || '等好友关注你' }}</span>
       </div>
     </section>
 
-    <section class="profile-menu">
+    <!-- 功能菜单 -->
+    <section class="menu-section">
       <div
         v-for="(group, groupIndex) in menuGroups"
         :key="`group-${groupIndex}`"
         class="menu-group"
-        :class="{ 'menu-group-spaced': groupIndex !== 0 }"
+        :class="{ 'has-spacing': groupIndex !== 0 }"
       >
         <div
           v-for="item in group"
           :key="item.id"
-          class="menu-item"
+          class="menu-row"
         >
-          <div class="icon" :data-type="item.icon" />
-          <span class="label">{{ item.title }}</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <div class="menu-icon" :data-type="item.icon">
+            <span class="icon-emoji">{{ getIconEmoji(item.icon) }}</span>
+          </div>
+          <span class="menu-label">{{ item.title }}</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </div>
       </div>
     </section>
@@ -122,7 +153,7 @@ const menuGroups = computed(() => {
   padding-bottom: 72px;
   height: 100%;
   overflow-y: auto;
-  background: #ededed;
+  background: #EFEFF4;
 }
 
 .profile::-webkit-scrollbar {
@@ -130,187 +161,242 @@ const menuGroups = computed(() => {
   height: 0;
 }
 
-.profile-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 16px 12px;
+/* 用户信息卡片 */
+.profile-card {
   background: #fff;
-  border-bottom: 1px solid #ededed;
+  padding: 20px 16px 16px;
+  margin-bottom: 10px;
+  position: relative;
 }
 
-.avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 16px;
+.card-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.user-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
-.header-info {
+.user-info {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
 
-.name-row {
+.name-section {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.name-row h2 {
+.user-name {
   margin: 0;
   font-size: 20px;
-  font-weight: 700;
-  color: #111;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: -0.3px;
 }
 
-.name-row svg {
-  width: 16px;
-  height: 16px;
+.chevron-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .wechat-id {
-  margin: 6px 0 0;
-  font-size: 13px;
-  color: #8a8a8a;
+  margin: 0;
+  font-size: 14px;
+  color: #888;
+  letter-spacing: -0.2px;
 }
 
-.tagline {
-  margin: 4px 0 0;
-  font-size: 13px;
-  color: #6d6d6d;
+.user-tagline {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
 }
 
-.qr-button {
+.qr-code-button {
+  position: absolute;
+  top: 20px;
+  right: 16px;
   border: none;
   background: none;
-  padding: 6px;
+  padding: 4px;
+  cursor: pointer;
 }
 
-.qr-button svg {
-  width: 28px;
-  height: 28px;
+.qr-code-button svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
-.status-strip {
+/* 状态栏 */
+.status-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px 12px;
+  padding: 12px 16px;
   background: #fff;
-  border-bottom: 1px solid #ededed;
+  margin-bottom: 10px;
 }
 
-.status-button {
+.add-status-button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(26, 173, 25, 0.2);
-  background: rgba(26, 173, 25, 0.1);
-  color: #1aad19;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(7, 193, 96, 0.2);
+  background: rgba(7, 193, 96, 0.08);
+  color: #07C160;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-.plus {
-  font-size: 16px;
+.add-status-button:active {
+  background: rgba(7, 193, 96, 0.15);
+}
+
+.plus-sign {
+  font-size: 18px;
   line-height: 1;
+  font-weight: 400;
 }
 
-.status-friends {
+.status-text {
+  letter-spacing: -0.2px;
+}
+
+.friends-status {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #8d8d8d;
-  font-size: 12px;
 }
 
-.avatar-stack {
+.friend-avatars {
   display: flex;
   align-items: center;
 }
 
-.avatar-stack img {
-  width: 24px;
-  height: 24px;
+.friend-avatar {
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border: 2px solid #fff;
   object-fit: cover;
   margin-left: -8px;
 }
 
-.avatar-stack img:first-child {
+.friend-avatar:first-child {
   margin-left: 0;
 }
 
-.friends-text {
+.friends-label {
+  font-size: 13px;
+  color: #999;
   white-space: nowrap;
 }
 
-.profile-menu {
-  padding: 12px 0 32px;
+/* 功能菜单 */
+.menu-section {
+  padding: 0;
 }
 
 .menu-group {
   background: #fff;
-  border-top: 1px solid #ededed;
-  border-bottom: 1px solid #ededed;
+  margin-bottom: 10px;
 }
 
-.menu-group-spaced {
-  margin-top: 12px;
+.has-spacing {
+  margin-top: 0;
 }
 
-.menu-item {
+.menu-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 16px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 13px 16px;
+  border-bottom: 0.5px solid #E5E5E5;
+  cursor: pointer;
+  transition: background 0.15s ease;
 }
 
-.menu-item:last-child {
+.menu-row:active {
+  background: #ECECEC;
+}
+
+.menu-row:last-child {
   border-bottom: none;
 }
 
-.icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #1aad19, #0b840b);
+.menu-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.icon[data-type='favorites'] {
-  background: linear-gradient(135deg, #ffba00, #ff9030);
+.menu-icon[data-type='services'] {
+  background: linear-gradient(135deg, #07C160, #05A850);
 }
 
-.icon[data-type='moments'] {
-  background: linear-gradient(135deg, #38a1ff, #2d6cff);
+.menu-icon[data-type='favorites'] {
+  background: linear-gradient(135deg, #FFD04B, #FFC20E);
 }
 
-.icon[data-type='wallet'] {
-  background: linear-gradient(135deg, #ff9a62, #ff6b3d);
+.menu-icon[data-type='moments'] {
+  background: linear-gradient(135deg, #36A9F5, #2C99E8);
 }
 
-.icon[data-type='emoji'] {
-  background: linear-gradient(135deg, #f472b6, #ec4899);
+.menu-icon[data-type='orders'] {
+  background: linear-gradient(135deg, #FF9F42, #FF7629);
 }
 
-.icon[data-type='settings'] {
-  background: linear-gradient(135deg, #6b7280, #4b5563);
+.menu-icon[data-type='wallet'] {
+  background: linear-gradient(135deg, #FF9F42, #FF7629);
 }
 
-.label {
+.menu-icon[data-type='emoji'],
+.menu-icon[data-type='stickers'] {
+  background: linear-gradient(135deg, #FF70B8, #FF4A9F);
+}
+
+.menu-icon[data-type='settings'] {
+  background: linear-gradient(135deg, #8B8B8B, #6B6B6B);
+}
+
+.icon-emoji {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.menu-label {
   flex: 1;
   font-size: 16px;
-  color: #111;
+  color: #000;
+  font-weight: 400;
+  letter-spacing: -0.3px;
 }
 
-.menu-item svg {
-  width: 18px;
-  height: 18px;
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 </style>

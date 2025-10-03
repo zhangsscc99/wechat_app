@@ -41,6 +41,7 @@ npm run dev
 | 位置 | 指令 | 说明 |
 | --- | --- | --- |
 | backend | `npm run dev` | 启动 Express 接口服务 |
+| backend | `npm run dev:watch` | 启动带自动重启的开发服务器（需安装 nodemon）|
 | frontend | `npm run dev` | 启动前端开发服务器 |
 | frontend | `npm run build` | 产出生产构建包 |
 

@@ -553,16 +553,16 @@ onUnmounted(() => {
 }
 
 .content-wechat {
-  background: #f5f5f5;
+  background: #fff;
 }
 
 .content-contacts {
-  background: #f4f4f4;
+  background: #EFEFF4;
 }
 
 .content-discover,
 .content-me {
-  background: #f4f4f4;
+  background: #EFEFF4;
 }
 
 .loading-state {
@@ -613,25 +613,27 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  color: #6f6f6f;
-  padding: 6px 0;
+  gap: 3px;
+  font-size: 11px;
+  color: #7F7F7F;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .tab-button svg {
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   fill: currentColor;
 }
 
 .tab-button.active {
-  color: #1aad19;
-  font-weight: 600;
+  color: #07C160;
+  font-weight: 500;
 }
 
 .tab-button.active svg {
-  stroke: #1aad19;
+  stroke: #07C160;
 }
 
 .tab-icon {
@@ -643,24 +645,29 @@ onUnmounted(() => {
 
 .tab-badge {
   position: absolute;
-  top: -4px;
-  right: -12px;
-  min-width: 18px;
-  padding: 2px 5px;
-  background: #ff4949;
+  top: -6px;
+  right: -14px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: #FA5151;
   color: #fff;
-  border-radius: 20px;
+  border-radius: 8px;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .tab-dot {
   position: absolute;
   top: -3px;
-  right: -8px;
+  right: -6px;
   width: 8px;
   height: 8px;
-  background: #ff4949;
+  background: #FA5151;
   border-radius: 50%;
 }
 

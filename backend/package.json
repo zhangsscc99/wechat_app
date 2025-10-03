@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node src/server.js",
+    "dev:watch": "nodemon src/server.js",
     "start": "node src/server.js"
   },
   "keywords": [],
@@ -16,5 +17,8 @@
     "cors": "^2.8.5",
     "dayjs": "^1.11.18",
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
   }
 }
