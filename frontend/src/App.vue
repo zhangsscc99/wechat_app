@@ -58,10 +58,8 @@ const moments = ref([]);
 const showMoments = ref(false);
 const loadingChat = ref(false);
 const errorMessage = ref('');
-const statusTime = ref(getTimeString());
 
 let errorTimer = null;
-let clockTimer = null;
 
 const totalUnread = computed(() =>
   (chatList.value || []).reduce((sum, chat) => sum + (chat.unreadCount || 0), 0)
@@ -120,13 +118,6 @@ const navBadges = computed(() => ({
 }));
 
 const currentUserId = computed(() => profile.value?.user?.id || 'user-self');
-
-function getTimeString() {
-  const now = new Date();
-  const hours = now.getHours().toString().padStart(2, '0');
-  const minutes = now.getMinutes().toString().padStart(2, '0');
-  return `${hours}:${minutes}`;
-}
 
 function showError(error) {
   console.error(error);
@@ -237,17 +228,11 @@ onMounted(() => {
   loadDiscover();
   loadProfile();
   loadMoments();
-  clockTimer = setInterval(() => {
-    statusTime.value = getTimeString();
-  }, 60000);
 });
 
 onUnmounted(() => {
   if (errorTimer) {
     clearTimeout(errorTimer);
-  }
-  if (clockTimer) {
-    clearInterval(clockTimer);
   }
 });
 </script>
@@ -388,66 +373,6 @@ onUnmounted(() => {
   margin: 0 auto;
   background: #ededed;
   overflow: hidden;
-}
-
-.status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px 4px;
-  font-size: 12px;
-  color: #616161;
-  background: #fefefe;
-}
-
-.status-time {
-  font-weight: 600;
-  letter-spacing: 0.4px;
-}
-
-.status-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.status-icons .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #5a5a5a;
-}
-
-.status-icons .mini-app,
-.status-icons .cloud,
-.status-icons .bell {
-  width: 12px;
-  height: 12px;
-  border-radius: 4px;
-}
-
-.status-icons .mini-app {
-  background: linear-gradient(135deg, #ff6262, #ff2f5f);
-}
-
-.status-icons .cloud {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-}
-
-.status-icons .bell {
-  background: linear-gradient(135deg, #facc15, #f97316);
-}
-
-.status-icons .signal {
-  font-weight: 600;
-}
-
-.status-icons .battery svg {
-  width: 24px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.2;
 }
 
 .nav-bar {
