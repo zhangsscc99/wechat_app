@@ -1,0 +1,36 @@
+:root {
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+  color: #111;
+  background-color: #ededed;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #cfcfcf 0%, #e8e8e8 100%);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px 0;
+}
+
+#app {
+  width: 100%;
+  max-width: 420px;
+  min-height: calc(100vh - 32px);
+  position: relative;
+}
+
+img {
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
