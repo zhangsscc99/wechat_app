@@ -101,30 +101,30 @@ function getIconPaths(iconType) {
   <div class="profile" v-if="props.profile?.user">
     <!-- 用户信息卡片 -->
     <section class="profile-card">
-      <div class="card-content">
+      <div class="card-header">
         <img :src="props.profile.user.avatar" alt="头像" class="user-avatar" />
-        <div class="user-info">
-          <div class="name-section">
-            <h2 class="user-name">{{ props.profile.user.name }}</h2>
-            <svg class="chevron-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" fill="none" stroke="#BEBEBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <div class="header-actions">
+          <button class="qr-code-button" type="button" aria-label="我的二维码">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="4" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
+              <rect x="14" y="4" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
+              <rect x="4" y="14" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
+              <rect x="15" y="15" width="2" height="2" fill="#000"/>
+              <rect x="18" y="15" width="2" height="2" fill="#000"/>
+              <rect x="15" y="18" width="2" height="2" fill="#000"/>
+              <rect x="18" y="18" width="2" height="2" fill="#000"/>
             </svg>
-          </div>
-          <p class="wechat-id">微信号：{{ props.profile.user.wechatId }}</p>
-          <p v-if="props.profile.user.tagline" class="user-tagline">{{ props.profile.user.tagline }}</p>
+          </button>
+          <svg class="chevron-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="#BEBEBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </div>
       </div>
-      <button class="qr-code-button" type="button" aria-label="我的二维码">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="4" y="4" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
-          <rect x="14" y="4" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
-          <rect x="4" y="14" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5"/>
-          <rect x="15" y="15" width="2" height="2" fill="#000"/>
-          <rect x="18" y="15" width="2" height="2" fill="#000"/>
-          <rect x="15" y="18" width="2" height="2" fill="#000"/>
-          <rect x="18" y="18" width="2" height="2" fill="#000"/>
-        </svg>
-      </button>
+      <div class="card-info">
+        <h2 class="user-name">{{ props.profile.user.name }}</h2>
+        <p class="wechat-id">微信号：{{ props.profile.user.wechatId }}</p>
+        <p v-if="props.profile.user.tagline" class="user-tagline">{{ props.profile.user.tagline }}</p>
+      </div>
     </section>
 
     <!-- 状态栏 -->
@@ -202,13 +202,13 @@ function getIconPaths(iconType) {
   background: #fff;
   padding: 20px 16px 16px;
   margin-bottom: 10px;
-  position: relative;
 }
 
-.card-content {
+.card-header {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .user-avatar {
@@ -219,32 +219,43 @@ function getIconPaths(iconType) {
   flex-shrink: 0;
 }
 
-.user-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
-}
-
-.name-section {
+.header-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
 }
 
-.user-name {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: #000;
-  letter-spacing: -0.3px;
+.qr-code-button {
+  border: none;
+  background: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.qr-code-button svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .chevron-icon {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: -0.3px;
 }
 
 .wechat-id {
@@ -259,22 +270,6 @@ function getIconPaths(iconType) {
   font-size: 14px;
   color: #666;
   line-height: 1.4;
-}
-
-.qr-code-button {
-  position: absolute;
-  top: 20px;
-  right: 16px;
-  border: none;
-  background: none;
-  padding: 4px;
-  cursor: pointer;
-}
-
-.qr-code-button svg {
-  width: 20px;
-  height: 20px;
-  display: block;
 }
 
 /* 状态栏 */
@@ -429,6 +424,7 @@ function getIconPaths(iconType) {
   color: #000;
   font-weight: 400;
   letter-spacing: -0.3px;
+  text-align: left;
 }
 
 .arrow-icon {
