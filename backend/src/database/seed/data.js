@@ -4,195 +4,251 @@ const now = dayjs();
 
 const chats = [
   {
-    id: 'chat-harbor-crew',
-    name: 'Harbor Crew',
+    id: 'chat-tech-leaders',
+    name: '互联网大佬群',
     avatar: 'https://i.pravatar.cc/100?img=24',
-    subtitle: 'Dockside reopens at dawn. See you all there.',
+    subtitle: '马云: 明天早上9点开会讨论新项目',
     updatedAt: now.subtract(2, 'minute').toISOString(),
-    unreadCount: 3,
+    unreadCount: 5,
     muted: false,
     pinned: true,
     type: 'group',
-    participants: ['Iris Vega', 'Milo Park', 'Zara Bloom', 'Kai Rowan']
+    participants: ['我', '马云', '马化腾', '雷军', '刘强东']
   },
   {
-    id: 'chat-luna',
-    name: 'Luna Rivera',
-    avatar: 'https://i.pravatar.cc/100?img=23',
-    subtitle: 'Uploaded the design mock. Thoughts?',
-    updatedAt: now.subtract(12, 'minute').toISOString(),
+    id: 'chat-mayun',
+    name: '马云',
+    avatar: 'https://i.pravatar.cc/100?img=57',
+    subtitle: '下周的阿里云峰会记得参加',
+    updatedAt: now.subtract(15, 'minute').toISOString(),
     unreadCount: 0,
     muted: false,
     pinned: false,
     type: 'single',
-    participants: ['Iris Vega', 'Luna Rivera']
+    participants: ['我', '马云']
   },
   {
-    id: 'chat-nimbus-lab',
-    name: 'Nimbus Lab',
-    avatar: 'https://i.pravatar.cc/100?img=45',
-    subtitle: 'Sprint retro slides are ready.',
+    id: 'chat-mahuateng',
+    name: '马化腾',
+    avatar: 'https://i.pravatar.cc/100?img=34',
+    subtitle: '微信生态的新功能要不要了解一下？',
     updatedAt: now.subtract(1, 'hour').toISOString(),
     unreadCount: 0,
     muted: true,
     pinned: false,
-    type: 'group',
-    participants: ['Iris Vega', 'Nimbus Lab Bot']
+    type: 'single',
+    participants: ['我', '马化腾']
   },
   {
-    id: 'chat-echo-podcast',
-    name: 'Echo Podcast',
-    avatar: 'https://i.pravatar.cc/100?img=53',
-    subtitle: 'Episode 18 teaser is live!',
+    id: 'chat-leijun',
+    name: '雷军',
+    avatar: 'https://i.pravatar.cc/100?img=4',
+    subtitle: '小米14 Pro已经发布了，你觉得怎么样？',
     updatedAt: now.subtract(3, 'hour').toISOString(),
     unreadCount: 2,
     muted: false,
     pinned: false,
-    type: 'group',
-    participants: ['Iris Vega', 'Echo Podcast']
+    type: 'single',
+    participants: ['我', '雷军']
   },
   {
-    id: 'chat-maple-coffee',
-    name: 'Maple Coffee',
-    avatar: 'https://i.pravatar.cc/100?img=8',
-    subtitle: 'Bean sampler shipped this morning.',
+    id: 'chat-liuqiangdong',
+    name: '刘强东',
+    avatar: 'https://i.pravatar.cc/100?img=9',
+    subtitle: '京东物流的效率又提升了',
     updatedAt: now.subtract(1, 'day').toISOString(),
     unreadCount: 0,
     muted: true,
     pinned: false,
-    type: 'service',
-    participants: ['Iris Vega', 'Maple Coffee Bot']
+    type: 'single',
+    participants: ['我', '刘强东']
   },
   {
-    id: 'chat-sketch-club',
-    name: 'Sketch Club',
-    avatar: 'https://i.pravatar.cc/100?img=37',
-    subtitle: 'Tonight: urban sketching at the pier.',
+    id: 'chat-zhangyiming',
+    name: '张一鸣',
+    avatar: 'https://i.pravatar.cc/100?img=70',
+    subtitle: '抖音的新算法上线了，效果不错',
     updatedAt: now.subtract(2, 'day').toISOString(),
-    unreadCount: 5,
+    unreadCount: 3,
     muted: false,
     pinned: false,
-    type: 'group',
-    participants: ['Iris Vega', 'Sketch Club', 'Nola Drift']
+    type: 'single',
+    participants: ['我', '张一鸣']
   },
   {
-    id: 'chat-aurora',
-    name: 'Aurora Chen',
-    avatar: 'https://i.pravatar.cc/100?img=15',
-    subtitle: 'Can you review the grant letter?',
+    id: 'chat-huangzheng',
+    name: '黄峥',
+    avatar: 'https://i.pravatar.cc/100?img=17',
+    subtitle: '拼多多Q3财报出来了，超预期',
     updatedAt: now.subtract(3, 'day').toISOString(),
     unreadCount: 0,
     muted: false,
     pinned: false,
     type: 'single',
-    participants: ['Iris Vega', 'Aurora Chen']
+    participants: ['我', '黄峥']
   },
   {
-    id: 'chat-kinoko-studio',
-    name: 'Kinoko Studio',
-    avatar: 'https://i.pravatar.cc/100?img=19',
-    subtitle: 'Your order #L928 is ready.',
+    id: 'chat-dinglei',
+    name: '丁磊',
+    avatar: 'https://i.pravatar.cc/100?img=11',
+    subtitle: '网易云音乐会员送你一个',
     updatedAt: now.subtract(4, 'day').toISOString(),
     unreadCount: 0,
     muted: true,
     pinned: false,
-    type: 'service',
-    participants: ['Iris Vega', 'Kinoko Studio Concierge']
+    type: 'single',
+    participants: ['我', '丁磊']
+  },
+  {
+    id: 'chat-wangxing',
+    name: '王兴',
+    avatar: 'https://i.pravatar.cc/100?img=50',
+    subtitle: '美团外卖的即时配送又快了10分钟',
+    updatedAt: now.subtract(5, 'day').toISOString(),
+    unreadCount: 1,
+    muted: false,
+    pinned: false,
+    type: 'single',
+    participants: ['我', '王兴']
+  },
+  {
+    id: 'chat-liyanhong',
+    name: '李彦宏',
+    avatar: 'https://i.pravatar.cc/100?img=28',
+    subtitle: '百度AI的新进展想跟你聊聊',
+    updatedAt: now.subtract(6, 'day').toISOString(),
+    unreadCount: 0,
+    muted: false,
+    pinned: false,
+    type: 'single',
+    participants: ['我', '李彦宏']
   }
 ];
 
 const chatMessages = {
-  'chat-harbor-crew': [
+  'chat-tech-leaders': [
     {
-      id: 'msg-harbor-1',
-      sender: 'Iris Vega',
-      senderId: 'user-self',
-      text: 'Morning team, tide charts look friendly tomorrow.',
+      id: 'msg-group-1',
+      sender: '雷军',
+      senderId: 'user-leijun',
+      text: '大家好，小米汽车的销量突破10万台了！',
+      timestamp: now.subtract(5, 'minute').toISOString()
+    },
+    {
+      id: 'msg-group-2',
+      sender: '马化腾',
+      senderId: 'user-mahuateng',
+      text: '恭喜恭喜！微信也准备推出新功能支持智能汽车',
+      timestamp: now.subtract(4, 'minute').toISOString()
+    },
+    {
+      id: 'msg-group-3',
+      sender: '刘强东',
+      senderId: 'user-liuqiangdong',
+      text: '京东物流可以帮忙配送汽车配件',
       timestamp: now.subtract(3, 'minute').toISOString()
     },
     {
-      id: 'msg-harbor-2',
-      sender: 'Milo Park',
-      senderId: 'user-milo',
-      text: 'Bringing the lanterns and thermos.',
+      id: 'msg-group-4',
+      sender: '马云',
+      senderId: 'user-mayun',
+      text: '明天早上9点开会讨论新项目',
       timestamp: now.subtract(2, 'minute').toISOString()
-    },
-    {
-      id: 'msg-harbor-3',
-      sender: 'Zara Bloom',
-      senderId: 'user-zara',
-      text: 'Saving spots on the east deck.',
-      timestamp: now.subtract(1, 'minute').toISOString()
     }
   ],
-  'chat-luna': [
+  'chat-mayun': [
     {
-      id: 'msg-luna-1',
-      sender: 'Luna Rivera',
-      senderId: 'user-luna',
-      text: 'Uploaded the design mock. Thoughts?',
-      timestamp: now.subtract(12, 'minute').toISOString()
+      id: 'msg-mayun-1',
+      sender: '马云',
+      senderId: 'user-mayun',
+      text: '下周的阿里云峰会记得参加',
+      timestamp: now.subtract(16, 'minute').toISOString()
     },
     {
-      id: 'msg-luna-2',
-      sender: 'Iris Vega',
+      id: 'msg-mayun-2',
+      sender: '我',
       senderId: 'user-self',
-      text: 'Love the gradients—maybe soften the corner radius?',
-      timestamp: now.subtract(8, 'minute').toISOString()
+      text: '好的，我一定到场',
+      timestamp: now.subtract(15, 'minute').toISOString()
     }
   ],
-  'chat-nimbus-lab': [
+  'chat-mahuateng': [
     {
-      id: 'msg-nimbus-1',
-      sender: 'Nimbus Lab Bot',
-      senderId: 'service-nimbus',
-      text: 'Sprint retro slides are ready.',
+      id: 'msg-mahuateng-1',
+      sender: '马化腾',
+      senderId: 'user-mahuateng',
+      text: '微信生态的新功能要不要了解一下？',
       timestamp: now.subtract(1, 'hour').toISOString()
     }
   ],
-  'chat-echo-podcast': [
+  'chat-leijun': [
     {
-      id: 'msg-echo-1',
-      sender: 'Echo Podcast',
-      senderId: 'service-echo',
-      text: 'Episode 18 teaser is live! Tap to listen.',
+      id: 'msg-leijun-1',
+      sender: '雷军',
+      senderId: 'user-leijun',
+      text: '小米14 Pro已经发布了，你觉得怎么样？',
+      timestamp: now.subtract(4, 'hour').toISOString()
+    },
+    {
+      id: 'msg-leijun-2',
+      sender: '我',
+      senderId: 'user-self',
+      text: '拍照效果很赞，续航也不错',
       timestamp: now.subtract(3, 'hour').toISOString()
     }
   ],
-  'chat-maple-coffee': [
+  'chat-liuqiangdong': [
     {
-      id: 'msg-maple-1',
-      sender: 'Maple Coffee',
-      senderId: 'service-maple',
-      text: 'Bean sampler shipped this morning. Tracking #MC4721.',
+      id: 'msg-liuqiangdong-1',
+      sender: '刘强东',
+      senderId: 'user-liuqiangdong',
+      text: '京东物流的效率又提升了',
       timestamp: now.subtract(1, 'day').toISOString()
     }
   ],
-  'chat-sketch-club': [
+  'chat-zhangyiming': [
     {
-      id: 'msg-sketch-1',
-      sender: 'Sketch Club',
-      senderId: 'group-sketch',
-      text: 'Tonight: urban sketching at the pier. Bring ink pens!',
+      id: 'msg-zhangyiming-1',
+      sender: '张一鸣',
+      senderId: 'user-zhangyiming',
+      text: '抖音的新算法上线了，效果不错',
       timestamp: now.subtract(2, 'day').toISOString()
     }
   ],
-  'chat-aurora': [
+  'chat-huangzheng': [
     {
-      id: 'msg-aurora-1',
-      sender: 'Aurora Chen',
-      senderId: 'user-aurora',
-      text: 'Can you review the grant letter?',
+      id: 'msg-huangzheng-1',
+      sender: '黄峥',
+      senderId: 'user-huangzheng',
+      text: '拼多多Q3财报出来了，超预期',
       timestamp: now.subtract(3, 'day').toISOString()
     }
   ],
-  'chat-kinoko-studio': [
+  'chat-dinglei': [
     {
-      id: 'msg-kinoko-1',
-      sender: 'Kinoko Studio',
-      senderId: 'service-kinoko',
-      text: 'Your order #L928 is ready for pickup.',
+      id: 'msg-dinglei-1',
+      sender: '丁磊',
+      senderId: 'user-dinglei',
+      text: '网易云音乐会员送你一个',
       timestamp: now.subtract(4, 'day').toISOString()
+    }
+  ],
+  'chat-wangxing': [
+    {
+      id: 'msg-wangxing-1',
+      sender: '王兴',
+      senderId: 'user-wangxing',
+      text: '美团外卖的即时配送又快了10分钟',
+      timestamp: now.subtract(5, 'day').toISOString()
+    }
+  ],
+  'chat-liyanhong': [
+    {
+      id: 'msg-liyanhong-1',
+      sender: '李彦宏',
+      senderId: 'user-liyanhong',
+      text: '百度AI的新进展想跟你聊聊',
+      timestamp: now.subtract(6, 'day').toISOString()
     }
   ]
 };
